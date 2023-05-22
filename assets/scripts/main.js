@@ -25,6 +25,7 @@ async function init() {
     console.error(err);
   }
   // Add each recipe to the <main> element
+  console.log("add recipe to document")
   addRecipesToDocument(recipes);
 }
 
@@ -106,7 +107,6 @@ async function getRecipes() {
     /**************************/
     // A4. TODO - Loop through each recipe in the RECIPE_URLS array constant
     //            declared above
-    console.log("2. inside recall")
     for (var i = 0; i < RECIPE_URLS.length; i = i + 1){
       var rec = RECIPE_URLS[i];
       // A5. TODO - Since we are going to be dealing with asynchronous code, create
@@ -134,6 +134,7 @@ async function getRecipes() {
         if (i == RECIPE_URLS.length -1){
           console.log("is saved")
           saveRecipesToStorage(fetchRecipes)
+          // addRecipesToDocument(fetchRecipes)
         }
       } catch (error){
         // console.log("ERROR")
@@ -143,12 +144,8 @@ async function getRecipes() {
         reject(error)
 
       }
-
-
     }
-    console.log("end of for loop")
-
-
+    init();
 
   });
 
@@ -181,4 +178,4 @@ function addRecipesToDocument(recipes) {
 }
 
 
-export {RECIPE_URLS};
+// export {RECIPE_URLS};
